@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bd6ua27hmfffr"]
+
+[ext_resource type="Script" uid="uid://cmk2xs6gm18kr" path="res://Scripts/chick.gd" id="1_r0x2n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j1mce"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0x2n"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_j1mce"]
+material = SubResource("StandardMaterial3D_r0x2n")
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Chick" type="CharacterBody3D" unique_id=892454766]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("1_r0x2n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008070363]
+shape = SubResource("CapsuleShape3D_j1mce")
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=923757238]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_j1mce")
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=1821690066]
+one_shot = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

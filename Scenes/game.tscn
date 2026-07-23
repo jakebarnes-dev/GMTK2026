@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cd3cfm70ia58u"]
+
+[ext_resource type="Script" uid="uid://cywfu02m5hmlh" path="res://Scripts/game.gd" id="1_qxrlw"]
+
+[node name="Game" type="Node" unique_id=868808485]
+script = ExtResource("1_qxrlw")
+level_scene_paths = Array[String](["res://Scenes/prototype_scene.tscn"])
