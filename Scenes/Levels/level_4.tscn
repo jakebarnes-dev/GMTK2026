@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://bqv6io0w4hoko"]
+
+[ext_resource type="PackedScene" uid="uid://bw1fu1j46k1p0" path="res://Scenes/player_character.tscn" id="1_vwhew"]
+[ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_jqrsn"]
+[ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="3_t74h0"]
+[ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_i4hbv"]
+[ext_resource type="PackedScene" uid="uid://vlpi05w0bjcl" path="res://Scenes/saw.tscn" id="5_jqrsn"]
+[ext_resource type="Script" uid="uid://dk8bm3civ7ey6" path="res://Scripts/path_bouncer.gd" id="6_t74h0"]
+
+[sub_resource type="Environment" id="Environment_iixi8"]
+background_mode = 1
+background_color = Color(0, 1, 1, 1)
+background_energy_multiplier = 0.9
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_jqrsn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level4" type="Node3D" unique_id=1932013038]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=198684530]
+environment = SubResource("Environment_iixi8")
+
+[node name="PlayerCharacter" parent="." unique_id=892454766 instance=ExtResource("1_vwhew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1824377900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 35.5)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 20, 9)
+material = ExtResource("2_jqrsn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=712794717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 8.25)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 20, 17.5)
+material = ExtResource("2_jqrsn")
+
+[node name="Goal" parent="." unique_id=1341494607 instance=ExtResource("3_t74h0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1836469461]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Road" parent="." unique_id=1800475892 instance=ExtResource("4_i4hbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+
+[node name="Saw8" parent="." unique_id=727181342 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, 0, 1, 24)
+
+[node name="Saw9" parent="." unique_id=654760176 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, -2, 1, 27.5)
+
+[node name="Saw10" parent="." unique_id=2036930459 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, 2, 1, 27.5)
+
+[node name="Saw11" parent="." unique_id=106457626 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, -4, 1, 20.5)
+
+[node name="Saw12" parent="." unique_id=492174219 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, 4, 1, 20.5)
+
+[node name="Saw13" parent="." unique_id=406047956 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, -4, 1, 31)
+
+[node name="Saw14" parent="." unique_id=1060245671 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.25881904, 0.9659258, 1.1313339e-08, 0.9659258, 0.25881904, -4.222196e-08, 4, 1, 31)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1174497655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 8)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1814634855]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D/PathFollow3D" unique_id=1709325878 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)
+
+[node name="Path3D2" type="Path3D" parent="." unique_id=1912973116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 10.5)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2" unique_id=1986570682]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+progress = 8.0
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D2/PathFollow3D" unique_id=54664708 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)
+
+[node name="Path3D5" type="Path3D" parent="." unique_id=718171956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D5" unique_id=443892221]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D5/PathFollow3D" unique_id=1728269762 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)
+
+[node name="Path3D6" type="Path3D" parent="." unique_id=1938630120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 5.5)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D6" unique_id=269297069]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+progress = 8.0
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D6/PathFollow3D" unique_id=36277038 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)
+
+[node name="Path3D3" type="Path3D" parent="." unique_id=159884464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 13)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D3" unique_id=1011882404]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D3/PathFollow3D" unique_id=1543006672 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)
+
+[node name="Path3D4" type="Path3D" parent="." unique_id=1082805041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 15.5)
+curve = SubResource("Curve3D_jqrsn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D4" unique_id=1489925257]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+progress = 8.0
+loop = false
+script = ExtResource("6_t74h0")
+SPEED = 3
+
+[node name="Saw" parent="Path3D4/PathFollow3D" unique_id=1850359603 instance=ExtResource("5_jqrsn")]
+transform = Transform3D(0.25881907, -0.9659258, -3.2398045e-08, 0.9659258, 0.25881907, 4.222196e-08, -3.239805e-08, -4.222196e-08, 1, 0, 0, 0)

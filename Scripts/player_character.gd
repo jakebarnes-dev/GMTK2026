@@ -4,7 +4,7 @@ const GRAVITY : float = 6.0
 const GLIDE_VELOCITY : float = -0.5
 const JUMP_VELOCITY : float = 5.0
 const MOVEMENT_ACC : float = 6.0
-const MOVEMENT_SPEED : float = 2.0
+const MOVEMENT_SPEED : float = 3.0
 const TURN_SPEED : float = 5.0
 const GLIDE_TURN_SPEED : float = 1
 const CHICK_SCENE = preload("res://Scenes/chick.tscn")
@@ -18,6 +18,7 @@ func _ready() -> void:
 		var chick_node = CHICK_SCENE.instantiate()
 		add_sibling.call_deferred(chick_node)
 		chick_node.formation_position = i
+		chick_node.position.y += 0.5
 
 func _physics_process(delta: float) -> void:
 	# Jump / Glide
@@ -51,5 +52,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	$Model.rotation.y = atan2(facing_direction.x, facing_direction.z) + deg_to_rad(180)
+	# Animation
+	$Model.rotation.y = atan2(facing_direction.x, facing_direction.z)
+	if is_on_floor():
+		if velocity.length() > 0.1:
+			$Model.animate.emit("walk")
+		else:
+			$Model.animate.emit("idle")
+	else:
+		if velocity.y < 0 and Input.is_action_pressed("jump"):
+			$Model.animate.emit("glide")
+		else:
+			$Model.animate.emit("flap")
+		
+	
 	GameController.player_position = global_position
+	if global_position.y < -2.0:
+		GameController.kill_player.emit()

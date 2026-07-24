@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bw1fu1j46k1p0"]
 
 [ext_resource type="Script" uid="uid://coyq3lbntnfym" path="res://Scripts/player_character.gd" id="1_qcwfp"]
+[ext_resource type="PackedScene" uid="uid://b2h5jn2msctrl" path="res://Scenes/lowpolychicken.tscn" id="2_cmdk4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j1mce"]
 radius = 0.25
@@ -11,6 +12,7 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=892454766]
 collision_layer = 2
+floor_block_on_wall = false
 script = ExtResource("1_qcwfp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008070363]
@@ -20,6 +22,10 @@ shape = SubResource("CapsuleShape3D_j1mce")
 transform = Transform3D(-1, -2.9802322e-08, -2.9802322e-08, 0, 0.8660254, 0.5, 0, 0.50000006, -0.8660253, 0, 2, -3)
 current = true
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=923757238]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+[node name="oldModel" type="MeshInstance3D" parent="." unique_id=923757238]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("PrismMesh_j1mce")
+
+[node name="Model" parent="." unique_id=1480499683 instance=ExtResource("2_cmdk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://v721atnfflix"]
+
+[ext_resource type="PackedScene" uid="uid://50kbiqnk0hm7" path="res://Models/lowpolychick.glb" id="1_mqxba"]
+[ext_resource type="Script" uid="uid://b3cpu3hgfibwm" path="res://Scripts/lowpolychick.gd" id="2_3khbj"]
+[ext_resource type="AnimationLibrary" uid="uid://cfu4er6vh1yhu" path="res://Models/AnimationLibraries/chicken.res" id="3_3khbj"]
+
+[node name="lowpolychick" unique_id=1334523394 instance=ExtResource("1_mqxba")]
+script = ExtResource("2_3khbj")
+
+[node name="Wing Left" parent="." index="4" unique_id=148607100]
+transform = Transform3D(0.6, -1.4305115e-07, 0, 1.4305115e-07, 0.6, 0, 0, 0, 0.6, 0.0834, 0.22523746, -0.002840669)
+
+[node name="Wing Right" parent="." index="5" unique_id=1943508993]
+transform = Transform3D(-0.6, -7.915739e-15, -9.059749e-08, 3.8484586e-15, 0.6, -7.7910755e-08, 9.059749e-08, -7.7910755e-08, -0.6, -0.0834, 0.22523746, -0.002840669)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=115181692]
+libraries/chicken = ExtResource("3_3khbj")

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b2h5jn2msctrl"]
+
+[ext_resource type="PackedScene" uid="uid://lkxcpwp6kdb4" path="res://Models/lowpolychicken.glb" id="1_csjaq"]
+[ext_resource type="Script" uid="uid://64dek7bpluox" path="res://Scripts/lowpolychicken.gd" id="2_1ve8l"]
+[ext_resource type="AnimationLibrary" uid="uid://cfu4er6vh1yhu" path="res://Models/AnimationLibraries/chicken.res" id="3_nj0ub"]
+
+[node name="lowpolychicken" unique_id=1480499683 instance=ExtResource("1_csjaq")]
+script = ExtResource("2_1ve8l")
+
+[node name="Leg Left" parent="." index="2" unique_id=1401993895]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.075, 0.17051564, -0.000512816)
+
+[node name="Leg Right" parent="." index="3" unique_id=1376870897]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.075, 0.17051564, -0.000512816)
+
+[node name="Wing Left" parent="." index="4" unique_id=1775639496]
+transform = Transform3D(-1.6292064e-07, -0.9999997, 0, 0.9999997, -1.6292064e-07, 0, 0, 0, 1, 0.139, 0.375, -0.012291275)
+
+[node name="Wing Right" parent="." index="5" unique_id=1245134566]
+transform = Transform3D(4.371138e-08, 0.9999997, -8.742278e-08, 0.9999997, -4.3711374e-08, 8.7422784e-08, 8.742275e-08, -8.7422755e-08, -1, -0.139, 0.375, -0.012291275)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=1254788795]
+libraries/ = ExtResource("3_nj0ub")

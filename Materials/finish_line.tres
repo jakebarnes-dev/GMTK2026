@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kn6mjnq14gk7"]
+
+[ext_resource type="Texture2D" uid="uid://bjuolq68ws6vv" path="res://Textures/finish_line.png" id="1_pd77t"]
+
+[resource]
+albedo_texture = ExtResource("1_pd77t")
+uv1_scale = Vector3(1.97, 2, 1.8)
+uv1_triplanar = true
+texture_filter = 0

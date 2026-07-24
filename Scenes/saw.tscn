@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://vlpi05w0bjcl"]
+
+[ext_resource type="Script" uid="uid://l86k3l4mtbki" path="res://Scripts/saw.gd" id="1_4qbox"]
+[ext_resource type="PackedScene" uid="uid://dwkpo4pn3tcxs" path="res://Models/lowpolysaw.glb" id="1_jp1mk"]
+[ext_resource type="Script" uid="uid://dt5rlkxmral7" path="res://Scripts/obstacle.gd" id="3_mk2w8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j1mce"]
+height = 0.05
+radius = 0.9
+
+[node name="Saw" type="Node3D" unique_id=1728269762]
+script = ExtResource("1_4qbox")
+
+[node name="lowpolysaw" parent="." unique_id=735846091 instance=ExtResource("1_jp1mk")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1686240137]
+collision_layer = 8
+collision_mask = 18
+script = ExtResource("3_mk2w8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=74220987]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 2.1855694e-08, 0)
+shape = SubResource("CylinderShape3D_j1mce")
+debug_color = Color(0.7, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

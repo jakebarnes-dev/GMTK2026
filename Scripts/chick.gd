@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
-const FOLLOW_DISTANCE : float = 0.5
-const SPEED : float = 2.0
+const FOLLOW_DISTANCE : float = 0.4
+const SPEED : float = 3.0
 const GLIDE_VELOCITY : float = -0.5
-const JUMP_VELOCITY : float = 5.0
+const JUMP_VELOCITY : float = 5.1
 const GRAVITY : float = 5.9
-const JUMP_DELAY : float = 0.2
+const JUMP_DELAY : float = 0.14
+const MOVEMENT_ACC : float = 12.0
 
 @export var formation_position : int = 0
 
@@ -51,16 +52,30 @@ func _physics_process(delta: float) -> void:
 	if my_position.distance_to(target_position) > FOLLOW_DISTANCE * (formation_position+1) + 0.2:
 		var direction = my_position.direction_to(target_position)
 		facing_direction = direction
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = move_toward(velocity.x, direction.x * SPEED, MOVEMENT_ACC * delta)
+		velocity.z = move_toward(velocity.z, direction.z * SPEED, MOVEMENT_ACC * delta)
 	else:
-		velocity.x = 0
-		velocity.z = 0
+		velocity.x = move_toward(velocity.x, 0.0, MOVEMENT_ACC * delta)
+		velocity.z = move_toward(velocity.z, 0.0, MOVEMENT_ACC * delta)
 	
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	$Model.rotation.y = atan2(facing_direction.x, facing_direction.z) + deg_to_rad(180)
+	# Animation
+	$Model.rotation.y = atan2(facing_direction.x, facing_direction.z)
+	if is_on_floor():
+		if velocity.length() > 0.1:
+			$Model.animate.emit("walk")
+		else:
+			$Model.animate.emit("idle")
+	else:
+		if velocity.y < 0 and Input.is_action_pressed("jump"):
+			$Model.animate.emit("glide")
+		else:
+			$Model.animate.emit("flap")
+			
+	if global_position.y < -2.0:
+		kill_chick.emit()
 
 func _on_jump_timer_timeout() -> void:
 	jump_now = true

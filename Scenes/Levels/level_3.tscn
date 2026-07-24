@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://75bdrulbei1o"]
+
+[ext_resource type="PackedScene" uid="uid://bw1fu1j46k1p0" path="res://Scenes/player_character.tscn" id="1_t8c31"]
+[ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_rc141"]
+[ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="3_yy6i0"]
+[ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_167vu"]
+
+[sub_resource type="Environment" id="Environment_iixi8"]
+background_mode = 1
+background_color = Color(0, 1, 1, 1)
+background_energy_multiplier = 0.9
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[node name="Level3" type="Node3D" unique_id=1932013038]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=198684530]
+environment = SubResource("Environment_iixi8")
+
+[node name="PlayerCharacter" parent="." unique_id=892454766 instance=ExtResource("1_t8c31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1824377900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 27.5)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 20, 9)
+material = ExtResource("2_rc141")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=712794717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 4.25)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 20, 9.5)
+material = ExtResource("2_rc141")
+
+[node name="Goal" parent="." unique_id=1341494607 instance=ExtResource("3_yy6i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1836469461]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Road" parent="." unique_id=1800475892 instance=ExtResource("4_167vu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
+
+[node name="Road2" parent="." unique_id=1134615507 instance=ExtResource("4_167vu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
