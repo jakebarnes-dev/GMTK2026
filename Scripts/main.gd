@@ -15,3 +15,12 @@ func _ready() -> void:
 func switch_to_game():
 	remove_child(main_menu_node)
 	add_child(game_node)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Fullscreen") and !OS.has_feature("web"):
+		var mode = DisplayServer.window_get_mode()
+
+		if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

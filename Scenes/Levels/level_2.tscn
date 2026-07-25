@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="3_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_fphuk"]
 [ext_resource type="PackedScene" uid="uid://dgrfyken8juh" path="res://Scenes/world_environment.tscn" id="5_ovj6s"]
+[ext_resource type="PackedScene" uid="uid://ccia78qf4pcc8" path="res://Scenes/lowpolypinetree.tscn" id="6_8qsmg"]
 
 [node name="Level2" type="Node3D" unique_id=1932013038]
 
@@ -22,14 +23,14 @@ material = ExtResource("2_ovj6s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 10)
 use_collision = true
 collision_mask = 18
-size = Vector3(8, 20, 4)
+size = Vector3(4, 20, 4)
 material = ExtResource("2_ovj6s")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=712794717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 1.75)
 use_collision = true
 collision_mask = 18
-size = Vector3(8, 20, 4.5)
+size = Vector3(6, 20, 4.5)
 material = ExtResource("2_ovj6s")
 
 [node name="Goal" parent="." unique_id=1341494607 instance=ExtResource("3_8qsmg")]
@@ -44,3 +45,15 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5)
 
 [node name="WorldEnvironment" parent="." unique_id=275501505 instance=ExtResource("5_ovj6s")]
+
+[node name="lowpolypinetree" parent="." unique_id=1192873606 instance=ExtResource("6_8qsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="lowpolypinetree2" parent="." unique_id=650801477 instance=ExtResource("6_8qsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="lowpolypinetree3" parent="." unique_id=148647642 instance=ExtResource("6_8qsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
+
+[node name="lowpolypinetree4" parent="." unique_id=840738638 instance=ExtResource("6_8qsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)

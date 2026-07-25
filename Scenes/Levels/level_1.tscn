@@ -5,6 +5,16 @@
 [ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="2_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_iixi8"]
+[ext_resource type="Material" uid="uid://cg4x4mxyl5cuc" path="res://Materials/wood.tres" id="6_xgxfi"]
+[ext_resource type="FontFile" uid="uid://cxuen2878uyug" path="res://Fonts/design.graffiti.comicsansmsgras.ttf" id="7_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://ccia78qf4pcc8" path="res://Scenes/lowpolypinetree.tscn" id="8_jv26f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1mce"]
+albedo_color = Color(0.99999994, 0.97800773, 0.8603084, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j1mce"]
+material = SubResource("StandardMaterial3D_j1mce")
+size = Vector3(3, 1.5, 0.05)
 
 [node name="Level1" type="Node3D" unique_id=1932013038]
 
@@ -14,42 +24,76 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1824377900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 7.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 5)
 use_collision = true
 collision_mask = 18
-size = Vector3(8, 20, 16.5)
+size = Vector3(8, 20, 11)
 material = ExtResource("2_3mqfk")
 
 [node name="Goal" parent="." unique_id=1341494607 instance=ExtResource("2_4dpyx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1836469461]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
 light_energy = 0.5
 shadow_enabled = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=987356312]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 10.5)
-use_collision = true
-collision_mask = 18
-radius = 2.0
-height = 1.0
-sides = 16
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=1471039749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-use_collision = true
-collision_mask = 18
-radius = 1.25
-height = 1.0
-sides = 16
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCylinder3D2" unique_id=822215616]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-use_collision = true
-collision_mask = 18
-height = 1.0
-sides = 16
-
 [node name="Road" parent="." unique_id=1800475892 instance=ExtResource("4_iixi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=395551883]
+transform = Transform3D(0.7071067, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.7071067, 2.5, -0.25, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Node3D" unique_id=455768846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.875, 0)
+use_collision = true
+collision_mask = 18
+radius = 0.1
+height = 3.75
+material = ExtResource("6_xgxfi")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Node3D" unique_id=1373352071]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+collision_mask = 18
+radius = 0.1
+height = 4.0
+material = ExtResource("6_xgxfi")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Node3D" unique_id=1051085193]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 2.5, 0)
+use_collision = true
+collision_mask = 18
+radius = 0.1
+height = 4.0
+material = ExtResource("6_xgxfi")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D" unique_id=1927073027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.875, 0)
+use_collision = true
+collision_mask = 18
+radius = 0.1
+height = 3.75
+material = ExtResource("6_xgxfi")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Node3D" unique_id=1243328479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+use_collision = true
+collision_mask = 18
+mesh = SubResource("BoxMesh_j1mce")
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=420547872]
+transform = Transform3D(-1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1, 0, 1.75, -0.05)
+outline_modulate = Color(0.32169935, 0.20827982, 0, 1)
+text = "WASD or Arrows to Move
+SPACE to Jump/Glide
+Click the X to Quit"
+font = ExtResource("7_5f3p6")
+font_size = 40
+line_spacing = 28.0
+
+[node name="lowpolypinetree" parent="." unique_id=1192873606 instance=ExtResource("8_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2.5)
+
+[node name="lowpolypinetree2" parent="." unique_id=690418239 instance=ExtResource("8_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0.5)

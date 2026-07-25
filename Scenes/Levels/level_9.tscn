@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://d3wk06tiw2ihj"]
+
+[ext_resource type="PackedScene" uid="uid://bw1fu1j46k1p0" path="res://Scenes/player_character.tscn" id="1_p3g8w"]
+[ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_wyulo"]
+[ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="3_vqdwi"]
+[ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_q6nfd"]
+[ext_resource type="PackedScene" uid="uid://dgrfyken8juh" path="res://Scenes/world_environment.tscn" id="5_2ergn"]
+[ext_resource type="PackedScene" uid="uid://vlpi05w0bjcl" path="res://Scenes/saw.tscn" id="6_msvyy"]
+[ext_resource type="Script" uid="uid://dk8bm3civ7ey6" path="res://Scripts/path_bouncer.gd" id="7_wyulo"]
+[ext_resource type="PackedScene" uid="uid://ccia78qf4pcc8" path="res://Scenes/lowpolypinetree.tscn" id="8_vqdwi"]
+
+[sub_resource type="Curve3D" id="Curve3D_vqdwi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level9" type="Node3D" unique_id=1932013038]
+
+[node name="PlayerCharacter" parent="." unique_id=892454766 instance=ExtResource("1_p3g8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1824377900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 42.25)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 20, 9)
+material = ExtResource("2_wyulo")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=712794717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 3)
+use_collision = true
+collision_mask = 18
+size = Vector3(2, 20, 7)
+material = ExtResource("2_wyulo")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=373778986]
+transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, -1.0927847e-08, -0.5, 9.5)
+use_collision = true
+collision_mask = 18
+size = Vector3(1.5, 1, 7)
+material = ExtResource("2_wyulo")
+
+[node name="Goal" parent="." unique_id=1341494607 instance=ExtResource("3_vqdwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46.75)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1836469461]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Road" parent="." unique_id=1800475892 instance=ExtResource("4_q6nfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41.75)
+
+[node name="WorldEnvironment" parent="." unique_id=275501505 instance=ExtResource("5_2ergn")]
+
+[node name="Saw" parent="." unique_id=1728269762 instance=ExtResource("6_msvyy")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0.25881904, 0.9659258, -7.713409e-09, -0.9659258, 0.25881904, 2.8786832e-08, 0, 1, 6.75)
+
+[node name="Saw2" parent="." unique_id=1810952953 instance=ExtResource("6_msvyy")]
+transform = Transform3D(-0.9330126, 0.24999999, 0.25881907, 0.25881904, 0.9659259, -4.3734043e-09, -0.2500001, 0.06698731, -0.96592593, 3.75, 1, 10.75)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=2070973755]
+transform = Transform3D(0.9659258, 0, -0.2588191, 0, 1, 0, 0.2588191, 0, 0.9659258, 0.75000024, -0.5, 22.75)
+use_collision = true
+collision_mask = 18
+size = Vector3(1.5, 1, 7)
+material = ExtResource("2_wyulo")
+
+[node name="Saw3" parent="." unique_id=1766632449 instance=ExtResource("6_msvyy")]
+transform = Transform3D(0.25000024, -0.06698732, 0.9659258, 0.258819, 0.96592593, -6.9569044e-09, -0.93301266, 0.24999997, 0.2588191, -0.25000024, 1, 26.5)
+
+[node name="Path3D6" type="Path3D" parent="." unique_id=1744056407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.25, 37.75)
+curve = SubResource("Curve3D_vqdwi")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D6" unique_id=552666403]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
+progress = 8.0
+loop = false
+script = ExtResource("7_wyulo")
+SPEED = 3
+
+[node name="Saw" parent="Path3D6/PathFollow3D" unique_id=1330600016 instance=ExtResource("6_msvyy")]
+transform = Transform3D(0.96592593, -0.25881898, -1.4894184e-09, 0.25881898, 0.96592593, 1.13133325e-08, -1.4894255e-09, -1.131333e-08, 1, -0.125, -0.28349364, 0)
+
+[node name="lowpolypinetree2" parent="." unique_id=1192873606 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 45)
+
+[node name="lowpolypinetree3" parent="." unique_id=496499793 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 45)
+
+[node name="lowpolypinetree4" parent="." unique_id=2094687682 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 39)
+
+[node name="lowpolypinetree5" parent="." unique_id=949948090 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 39)
+
+[node name="lowpolypinetree" parent="." unique_id=1722471953 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(-0.7980104, 0.51629055, 0.31084317, -0.46651942, -0.855758, 0.2236912, 0.38149622, 0.033493664, 0.9237634, 2.75, -1, 10)
+
+[node name="lowpolypinetree8" parent="." unique_id=981690871 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(0.6720803, -0.50736713, -0.53933907, -0.46651942, -0.855758, 0.2236912, -0.5750374, 0.1012735, -0.81183475, -2.5, -1, 9)
+
+[node name="lowpolypinetree6" parent="." unique_id=655608292 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(0.86955726, -0.49002948, -0.061163917, -0.46651947, -0.85575813, 0.22369124, -0.1619568, -0.16597821, -0.972739, 1.25, -1, 20)
+
+[node name="lowpolypinetree7" parent="." unique_id=121816597 instance=ExtResource("8_vqdwi")]
+transform = Transform3D(-0.8695573, 0.49002945, 0.061164025, -0.4665195, -0.85575825, 0.2236913, 0.1619569, 0.16597822, 0.972739, 0, -1, 25.25)

@@ -15,6 +15,8 @@ signal kill_chick()
 var facing_direction : Vector3
 var jump_now = false
 
+var blood_particles_scene = preload("res://Scenes/blood_particles.tscn")
+
 func _ready() -> void:
 	GameController.jump.connect(player_jumped)
 	self.kill_chick.connect(kill)
@@ -82,7 +84,6 @@ func _on_jump_timer_timeout() -> void:
 	jump_now = true
 
 func blood():
-	var blood_particles_scene = load("res://Scenes/blood_particles.tscn")
 	var blood_particles_node = blood_particles_scene.instantiate()
 	add_sibling(blood_particles_node)
 	blood_particles_node.global_position = global_position
