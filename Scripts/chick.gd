@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func kill():
 	GameController.kill_chick.emit(formation_position)
+	blood()
 	queue_free()
 
 func chick_killed(form_pos : int):
@@ -74,8 +75,14 @@ func _process(_delta: float) -> void:
 		else:
 			$Model.animate.emit("flap")
 			
-	if global_position.y < -2.0:
+	if global_position.y < -3.0:
 		kill_chick.emit()
 
 func _on_jump_timer_timeout() -> void:
 	jump_now = true
+
+func blood():
+	var blood_particles_scene = load("res://Scenes/blood_particles.tscn")
+	var blood_particles_node = blood_particles_scene.instantiate()
+	add_sibling(blood_particles_node)
+	blood_particles_node.global_position = global_position

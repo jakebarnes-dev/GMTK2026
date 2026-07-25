@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://coyq3lbntnfym" path="res://Scripts/player_character.gd" id="1_qcwfp"]
 [ext_resource type="PackedScene" uid="uid://b2h5jn2msctrl" path="res://Scenes/lowpolychicken.tscn" id="2_cmdk4"]
+[ext_resource type="AudioStream" uid="uid://b1nx5ij0wglme" path="res://SFX/mantisman_jump.wav" id="3_wko77"]
+[ext_resource type="AudioStream" uid="uid://6lyigvtkctul" path="res://SFX/Hollow Wind High Loop.wav" id="4_wko77"]
+[ext_resource type="AudioStream" uid="uid://bj4ql2crru8b8" path="res://SFX/Footsteps_Grass_01.wav" id="5_pb3n0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j1mce"]
 radius = 0.25
@@ -29,3 +32,15 @@ mesh = SubResource("PrismMesh_j1mce")
 
 [node name="Model" parent="." unique_id=1480499683 instance=ExtResource("2_cmdk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="JumpSound" type="AudioStreamPlayer3D" parent="." unique_id=1748206042]
+stream = ExtResource("3_wko77")
+volume_db = -5.0
+
+[node name="GlideSound" type="AudioStreamPlayer3D" parent="." unique_id=1829039787]
+stream = ExtResource("4_wko77")
+volume_db = -15.0
+
+[node name="WalkSound" type="AudioStreamPlayer3D" parent="." unique_id=295312483]
+stream = ExtResource("5_pb3n0")
+volume_db = -10.0

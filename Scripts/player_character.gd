@@ -24,14 +24,22 @@ func _physics_process(delta: float) -> void:
 	# Jump / Glide
 	turn_speed = TURN_SPEED
 	if is_on_floor():
+		if $GlideSound.playing:
+			$GlideSound.stop()
 		if Input.is_action_just_pressed("jump"):
 			velocity.y += JUMP_VELOCITY
 			GameController.jump.emit()
+			$JumpSound.pitch_scale = randf_range(0.9,1.1)
+			$JumpSound.play()
 	else:
 		if velocity.y < 0 and Input.is_action_pressed("jump"):
 			velocity.y = GLIDE_VELOCITY
 			turn_speed = GLIDE_TURN_SPEED
+			if not $GlideSound.playing:
+				$GlideSound.play()
 		else:
+			if $GlideSound.playing:
+				$GlideSound.stop()
 			velocity.y -= GRAVITY * delta
 	
 	# Movement
@@ -57,6 +65,9 @@ func _process(_delta: float) -> void:
 	if is_on_floor():
 		if velocity.length() > 0.1:
 			$Model.animate.emit("walk")
+			if not $WalkSound.playing:
+				$WalkSound.pitch_scale = randf_range(0.9,1.1)
+				$WalkSound.play()
 		else:
 			$Model.animate.emit("idle")
 	else:

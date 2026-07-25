@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://1b03h62wwda3" path="res://Scripts/number_label.gd" id="2_qxrlw"]
 [ext_resource type="FontFile" uid="uid://cxuen2878uyug" path="res://Fonts/design.graffiti.comicsansmsgras.ttf" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cex6hci72778e" path="res://Scripts/level_label.gd" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://b7y7yuxnfiagu" path="res://Scripts/reset_button.gd" id="5_wowpa"]
+[ext_resource type="AudioStream" uid="uid://codryn8odf1gi" path="res://SFX/wave_win.wav" id="6_i6g32"]
+[ext_resource type="AudioStream" uid="uid://bfpb7kcw5em27" path="res://SFX/ui_select.wav" id="7_1l0tm"]
+[ext_resource type="AudioStream" uid="uid://c8xk2q8b4iyw1" path="res://SFX/little-chicken.wav" id="8_v158k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wowpa"]
 font = ExtResource("3_3dryh")
@@ -25,14 +29,13 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node" unique_id=868808485]
 script = ExtResource("1_qxrlw")
-level_scene_paths = Array[String](["res://Scenes/Levels/level_1.tscn", "res://Scenes/Levels/level_2.tscn", "res://Scenes/Levels/level_3.tscn", "res://Scenes/Levels/level_4.tscn"])
+level_scene_paths = Array[String](["res://Scenes/Levels/level_1.tscn", "res://Scenes/Levels/level_2.tscn", "res://Scenes/Levels/level_3.tscn", "res://Scenes/Levels/level_4.tscn", "res://Scenes/Levels/level_5.tscn"])
 
 [node name="NumberLabel" type="Label" parent="." unique_id=2014969487]
-offset_left = -0.89117795
-offset_top = -5.242828
-offset_right = 58.10882
-offset_bottom = 61.75717
-rotation = -0.17453292
+offset_left = 527.1088
+offset_top = -5.2428308
+offset_right = 586.1088
+offset_bottom = 61.757168
 pivot_offset = Vector2(58.98362, 0.028316855)
 text = "11"
 label_settings = SubResource("LabelSettings_wowpa")
@@ -40,8 +43,8 @@ horizontal_alignment = 2
 script = ExtResource("2_qxrlw")
 
 [node name="SurvivorsLabel" type="Label" parent="." unique_id=1363712884]
-offset_left = 74.0
-offset_right = 229.0
+offset_left = 593.99994
+offset_right = 748.99994
 offset_bottom = 46.0
 text = "Chicken(s)"
 label_settings = SubResource("LabelSettings_3dryh")
@@ -60,3 +63,28 @@ text = "Level 1"
 label_settings = SubResource("LabelSettings_fbref")
 horizontal_alignment = 2
 script = ExtResource("3_wrm1d")
+
+[node name="ResetButton" type="Button" parent="." unique_id=1611802839]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 60.0
+offset_bottom = 59.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_3dryh")
+theme_override_font_sizes/font_size = 36
+text = "X"
+flat = true
+script = ExtResource("5_wowpa")
+
+[node name="NextLevelSound" type="AudioStreamPlayer" parent="." unique_id=1135999834]
+stream = ExtResource("6_i6g32")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=914879766]
+stream = ExtResource("7_1l0tm")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1371812514]
+stream = ExtResource("8_v158k")
+volume_db = -10.0
+
+[connection signal="pressed" from="ResetButton" to="ResetButton" method="_on_pressed"]

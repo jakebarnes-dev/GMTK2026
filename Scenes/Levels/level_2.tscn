@@ -4,19 +4,9 @@
 [ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_ovj6s"]
 [ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="3_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="4_fphuk"]
-
-[sub_resource type="Environment" id="Environment_iixi8"]
-background_mode = 1
-background_color = Color(0, 1, 1, 1)
-background_energy_multiplier = 0.9
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.5
+[ext_resource type="PackedScene" uid="uid://dgrfyken8juh" path="res://Scenes/world_environment.tscn" id="5_ovj6s"]
 
 [node name="Level2" type="Node3D" unique_id=1932013038]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=198684530]
-environment = SubResource("Environment_iixi8")
 
 [node name="PlayerCharacter" parent="." unique_id=892454766 instance=ExtResource("1_w2ac1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -52,3 +42,5 @@ shadow_enabled = true
 
 [node name="Road" parent="." unique_id=1800475892 instance=ExtResource("4_fphuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5)
+
+[node name="WorldEnvironment" parent="." unique_id=275501505 instance=ExtResource("5_ovj6s")]

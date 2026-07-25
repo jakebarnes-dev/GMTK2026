@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://35oyugow3gg2"]
+
+[ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="1_awi1s"]
+[ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="2_bwc64"]
+[ext_resource type="PackedScene" uid="uid://b2h5jn2msctrl" path="res://Scenes/lowpolychicken.tscn" id="3_85imr"]
+[ext_resource type="Script" uid="uid://of5q4u4bp487" path="res://Scripts/schrodingers_chick.gd" id="4_85imr"]
+[ext_resource type="PackedScene" uid="uid://v721atnfflix" path="res://Scenes/lowpolychick.tscn" id="4_bwc64"]
+[ext_resource type="FontFile" uid="uid://cxuen2878uyug" path="res://Fonts/design.graffiti.comicsansmsgras.ttf" id="6_pq638"]
+[ext_resource type="Script" uid="uid://dm3fh1663iqrx" path="res://Scripts/win_label.gd" id="7_8snof"]
+[ext_resource type="PackedScene" uid="uid://dgrfyken8juh" path="res://Scenes/world_environment.tscn" id="8_8snof"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_85imr"]
+font = ExtResource("6_pq638")
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="WinScreen" type="Node3D" unique_id=285058494]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=709003189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 1.125)
+use_collision = true
+collision_mask = 18
+size = Vector3(8, 10, 7.75)
+material = ExtResource("1_awi1s")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2126864724]
+transform = Transform3D(1, 0, 0, 0, 1, 2.9802322e-08, 0, -2.9802322e-08, 1, 0, 1, 5.5)
+
+[node name="Road" parent="." unique_id=1800475892 instance=ExtResource("2_bwc64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+
+[node name="lowpolychicken" parent="." unique_id=1480499683 instance=ExtResource("3_85imr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.75)
+
+[node name="SchrodingersChick0" type="Node3D" parent="." unique_id=175628462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 3)
+script = ExtResource("4_85imr")
+
+[node name="lowpolychick" parent="SchrodingersChick0" unique_id=1334523394 instance=ExtResource("4_bwc64")]
+
+[node name="SchrodingersChick1" type="Node3D" parent="." unique_id=875526454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 3)
+script = ExtResource("4_85imr")
+chicken_number = 1
+
+[node name="lowpolychick" parent="SchrodingersChick1" unique_id=833515079 instance=ExtResource("4_bwc64")]
+
+[node name="SchrodingersChick2" type="Node3D" parent="." unique_id=1477145488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 2.5)
+script = ExtResource("4_85imr")
+chicken_number = 2
+
+[node name="lowpolychick" parent="SchrodingersChick2" unique_id=1586806572 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0.25)
+
+[node name="SchrodingersChick3" type="Node3D" parent="." unique_id=1610664815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+script = ExtResource("4_85imr")
+chicken_number = 3
+
+[node name="lowpolychick" parent="SchrodingersChick3" unique_id=1757835166 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0.25)
+
+[node name="SchrodingersChick4" type="Node3D" parent="." unique_id=538359099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 3)
+script = ExtResource("4_85imr")
+chicken_number = 4
+
+[node name="lowpolychick" parent="SchrodingersChick4" unique_id=1343647025 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -0.25, 0, 0)
+
+[node name="SchrodingersChick5" type="Node3D" parent="." unique_id=1216401186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 3)
+script = ExtResource("4_85imr")
+chicken_number = 5
+
+[node name="lowpolychick" parent="SchrodingersChick5" unique_id=859570855 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0.25, 0, 0)
+
+[node name="SchrodingersChick6" type="Node3D" parent="." unique_id=1126313742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2.5)
+script = ExtResource("4_85imr")
+chicken_number = 6
+
+[node name="lowpolychick" parent="SchrodingersChick6" unique_id=1801342900 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0.25, 0, 0.25)
+
+[node name="SchrodingersChick7" type="Node3D" parent="." unique_id=1878164764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2.5)
+script = ExtResource("4_85imr")
+chicken_number = 7
+
+[node name="lowpolychick" parent="SchrodingersChick7" unique_id=1352485967 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -0.25, 0, 0.25)
+
+[node name="SchrodingersChick8" type="Node3D" parent="." unique_id=782836211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0, 3)
+script = ExtResource("4_85imr")
+chicken_number = 8
+
+[node name="lowpolychick" parent="SchrodingersChick8" unique_id=1154356261 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -1.75, 0, 0.75)
+
+[node name="SchrodingersChick9" type="Node3D" parent="." unique_id=2105226522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 3)
+script = ExtResource("4_85imr")
+chicken_number = 9
+
+[node name="lowpolychick" parent="SchrodingersChick9" unique_id=852960745 instance=ExtResource("4_bwc64")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 1.75, 0, 0.75)
+
+[node name="WinLabel" type="Label" parent="." unique_id=78748778]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.5
+offset_top = -260.0
+offset_right = 480.5
+offset_bottom = -58.99948
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congratulations!!!
+All 10 of your chicks survived the journey!
+You are a truly xtreme gamer!"
+label_settings = SubResource("LabelSettings_85imr")
+horizontal_alignment = 1
+script = ExtResource("7_8snof")
+win_texts = Array[String](["At least you survived... I guess...", "Only 1 of your chicks survived???
+Have you considered getting good?", "Wow... that was painful to watch.
+Only 2 of your chicks survived??
+Maybe video games aren't for you.", "Well... you did beat the game.
+You're supposed to keep your chicks ALIVE though...", "Only 4 of your chicks survived?
+I hope you aren't a parent in real life...", "Mediocre!
+Half of your chicks survived...
+Feel free to try again!", "Okay!
+6 out of 10 chicks survived!
+That's technically more than half of them!", "Good!
+7 out of 10 chicks survived!
+That's a passing grade!", "Congratulations!
+Only 2 of your chicks died tragically!
+They were your least favorite ones anyway...", "Congratulations!!
+All 9 of your chicks survived the journey!
+Wait... weren't there 10 before?
+", "Congratulations!!!
+All 10 of your chicks survived the journey!
+You are a truly xtreme gamer!"])
+lost_text = "GAME OVER!
+Click the X on the top left to retry..."
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1191763579]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" parent="." unique_id=275501505 instance=ExtResource("8_8snof")]

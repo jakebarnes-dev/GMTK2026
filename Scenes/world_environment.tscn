@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgrfyken8juh"]
+
+[sub_resource type="Environment" id="Environment_iixi8"]
+background_mode = 1
+background_color = Color(0, 1, 1, 1)
+background_energy_multiplier = 0.9
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+fog_enabled = true
+fog_light_color = Color(0, 1, 1, 1)
+fog_density = 0.005
+fog_height_density = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=275501505]
+environment = SubResource("Environment_iixi8")

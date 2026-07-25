@@ -1,12 +1,29 @@
 [gd_scene format=3 uid="uid://pcq8rppqacnt"]
 
 [ext_resource type="Script" uid="uid://dev6hi8dpos2l" path="res://Scripts/start_button.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://dcqqnpb5f5gis" path="res://Sprites/GMTK 2026 logo.png" id="1_trj04"]
+[ext_resource type="Script" uid="uid://bnt6so36nxtt0" path="res://Scripts/main_menu.gd" id="1_vr1f0"]
+[ext_resource type="FontFile" uid="uid://cxuen2878uyug" path="res://Fonts/design.graffiti.comicsansmsgras.ttf" id="1_yhxw7"]
 [ext_resource type="Material" uid="uid://duivrv46jtb0a" path="res://Materials/grass.tres" id="2_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://b2h5jn2msctrl" path="res://Scenes/lowpolychicken.tscn" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://brx6b3gtbbvso" path="res://Scenes/goal.tscn" id="4_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://v721atnfflix" path="res://Scenes/lowpolychick.tscn" id="5_n45e2"]
+[ext_resource type="Script" uid="uid://ctkfh45e654cf" path="res://Scripts/volume_slider.gd" id="5_t1dhk"]
 [ext_resource type="PackedScene" uid="uid://cji7v2xigyuit" path="res://Scenes/road.tscn" id="6_opfnp"]
 [ext_resource type="PackedScene" uid="uid://vlpi05w0bjcl" path="res://Scenes/saw.tscn" id="7_cp0ys"]
+[ext_resource type="AudioStream" uid="uid://bfpb7kcw5em27" path="res://SFX/ui_select.wav" id="11_t1dhk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1mce"]
+font = ExtResource("1_yhxw7")
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w2rn5"]
+font = ExtResource("1_yhxw7")
+font_size = 24
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Environment" id="Environment_n45e2"]
 background_mode = 1
@@ -14,17 +31,80 @@ background_color = Color(0, 1, 1, 1)
 background_energy_multiplier = 0.9
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.5
+ambient_light_energy = 0.6
 
 [node name="MainMenu" type="Node" unique_id=754384262]
+script = ExtResource("1_vr1f0")
 
-[node name="StartButton" type="Button" parent="." unique_id=489165718]
-offset_left = 35.0
-offset_top = 40.0
-offset_right = 205.0
-offset_bottom = 101.0
-text = "start"
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1159519573]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1003970]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -300.0
+offset_right = -210.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_trj04")
+
+[node name="StartButton" type="Button" parent="CanvasLayer" unique_id=489165718]
+offset_left = 60.0
+offset_top = 360.0
+offset_right = 430.0
+offset_bottom = 435.0
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_yhxw7")
+theme_override_font_sizes/font_size = 48
+text = "PLAY"
+flat = true
 script = ExtResource("1_28flt")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=516695164]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -66.0
+offset_right = 263.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "Created by Jake Barnes"
+label_settings = SubResource("LabelSettings_j1mce")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1047112167]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 140.0
+offset_right = -300.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=386834835]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_w2rn5")
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/VBoxContainer" unique_id=2018233965]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_t1dhk")
 
 [node name="3DScene" type="Node3D" parent="." unique_id=472119234]
 
@@ -92,4 +172,8 @@ transform = Transform3D(-0.2772121, 0.115189895, 0.9538788, -0.96022487, -0.0678
 [node name="Saw3" parent="3DScene" unique_id=914142045 instance=ExtResource("7_cp0ys")]
 transform = Transform3D(0.482963, 0.1294095, 0.8660253, -0.5950348, -0.6770773, 0.43301263, 0.642402, -0.7244444, -0.24999994, 4.5, -4, 0.5)
 
-[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=474750237]
+stream = ExtResource("11_t1dhk")
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="CanvasLayer/StartButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/VolumeSlider" to="CanvasLayer/VBoxContainer/VolumeSlider" method="_on_value_changed"]

@@ -5,7 +5,7 @@ extends Node3D
 signal animate(anim_name : String)
 
 func _ready() -> void:
-	animation.play("chicken/walk")
+	animation.play("chicken/idle")
 	animate.connect(play_animation)
 	
 func play_animation(anim_name : String):
